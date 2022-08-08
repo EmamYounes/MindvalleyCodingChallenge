@@ -31,14 +31,14 @@ class CategoriesAdapter(myDataset: MutableList<CategoriesItem>, context: Context
 
     override fun onBindViewHolder(holder: CategoriesViewHolder, position: Int) {
         viewHolder = holder
-        holder.bind(mDataset?.get(position)!!, position)
+        holder.bind(mDataset?.get(position)!!)
     }
 
 
     inner class CategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var categoriseName: TextView = view.findViewById(R.id.categorise_name)
 
-        fun bind(model: CategoriesItem, position: Int) {
+        fun bind(model: CategoriesItem) {
             categoriseName.text = model.name
         }
     }
