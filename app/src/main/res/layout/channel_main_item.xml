@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="#2B2929"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/channel_main_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="26dp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        tools:text="Mindvalley Mentoring" />
+
+    <TextView
+        android:id="@+id/channel_main_sub_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:textColor="#95989D"
+        android:textSize="16sp"
+        tools:text="98 series" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_sub_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        tools:listitem="@layout/channel_sub_item" />
+</LinearLayout>

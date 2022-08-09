@@ -7,42 +7,42 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mindvalleycodingchallenge.R
-import com.example.mindvalleycodingchallenge.ui.main.pojofile.MediaItem
+import com.example.mindvalleycodingchallenge.ui.main.pojofile.ChannelSubItem
 import com.squareup.picasso.Picasso
 
 
-class NewEpisodesAdapter(myDataset: MutableList<MediaItem>) :
-    RecyclerView.Adapter<NewEpisodesAdapter.NewEpisodesViewHolder>() {
+class ChannelSubAdapter(myDataset: MutableList<ChannelSubItem>) :
+    RecyclerView.Adapter<ChannelSubAdapter.ChannelViewHolder>() {
 
-    private var mDataset: MutableList<MediaItem>? = null
+    private var mDataset: MutableList<ChannelSubItem>? = null
 
 
-    private var viewHolder: NewEpisodesViewHolder? = null
+    private var viewHolder: ChannelViewHolder? = null
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): NewEpisodesViewHolder {
+    ): ChannelViewHolder {
         // create a new view
         val itemView: View = LayoutInflater.from(parent.context)
-            .inflate(R.layout.new_episode_item, parent, false)
+            .inflate(R.layout.channel_sub_item, parent, false)
 
-        return NewEpisodesViewHolder(itemView)
+        return ChannelViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: NewEpisodesViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ChannelViewHolder, position: Int) {
         viewHolder = holder
         holder.bind(mDataset?.get(position)!!, holder)
     }
 
 
-    inner class NewEpisodesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class ChannelViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private var episodeTitle: TextView = view.findViewById(R.id.episode_title)
         var episodeImage: ImageView = view.findViewById(R.id.episode_image)
 
-        fun bind(model: MediaItem, holder: NewEpisodesViewHolder) {
+        fun bind(model: ChannelSubItem, holder: ChannelViewHolder) {
             episodeTitle.text = model.title
-            Picasso.with(holder.itemView.context).load(model.coverAsset?.url).into(episodeImage);
+            Picasso.with(holder.itemView.context).load(model.url).into(episodeImage);
 
         }
     }
@@ -51,13 +51,13 @@ class NewEpisodesAdapter(myDataset: MutableList<MediaItem>) :
         return mDataset!!.size
     }
 
-    fun addNewItem(obj: MediaItem) {
+    fun addNewItem(obj: ChannelSubItem) {
         mDataset!!.add(obj)
         notifyItemInserted(mDataset!!.size - 1)
     }
 
-    fun addList(lst: List<MediaItem?>) {
-        mDataset = lst as MutableList<MediaItem>
+    fun addList(lst: List<ChannelSubItem?>) {
+        mDataset = lst as MutableList<ChannelSubItem>
         notifyDataSetChanged()
     }
 
@@ -66,17 +66,17 @@ class NewEpisodesAdapter(myDataset: MutableList<MediaItem>) :
         notifyDataSetChanged()
     }
 
-    fun getCurrentList(): List<MediaItem> {
+    fun getCurrentList(): List<ChannelSubItem> {
         return mDataset!!
     }
 
-    fun updateItem(pos: Int, obj: MediaItem?) {
+    fun updateItem(pos: Int, obj: ChannelSubItem?) {
         obj?.let { mDataset!!.removeAt(pos) }
         obj?.let { mDataset!!.add(pos, it) }
         notifyDataSetChanged()
     } //for add new item
 
-    fun updateItemWithoutNotify(pos: Int, obj: MediaItem?) {
+    fun updateItemWithoutNotify(pos: Int, obj: ChannelSubItem?) {
         obj?.let { mDataset!!.removeAt(pos) }
         obj?.let { mDataset!!.add(pos, it) }
     } //for add new item
